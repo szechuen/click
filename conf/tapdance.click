@@ -13,7 +13,7 @@ new_cuckoo :: Cuckoo;
 new_tee :: Tee(2);
 elligator_check :: Elligator;
 elligator_tee :: Tee(2);
-set_syn :: ForceTCP(FLAGS TH_SYN);
+set_syn :: ForceTCP(FLAGS 0x02);
 
 
 source -> https_filter -> td_cuckoo -> td_tee -> sink;
