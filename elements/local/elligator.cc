@@ -22,7 +22,7 @@ void ElligatorElement::push(int i, Packet *p)
   }
 
   unsigned char trailer[240];
-  std::strncpy((char *)&trailer, (char *)&p->data()[p->length()-256], 240);
+  std::memcpy(trailer, p->end_data() - 256, 240);
 
   unsigned char tag[180];
 

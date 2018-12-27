@@ -18,6 +18,7 @@ elligator_tee :: Tee(2);
 source -> https_filter -> td_cuckoo -> td_tee -> sink;
 
 td_cuckoo[1] -> tls_switch;
+td_cuckoo[2] -> Discard;
 td_tee[1] -> finrst_filter -> [2]td_cuckoo;
 
 
@@ -26,6 +27,7 @@ tls_switch[1] -> new_cuckoo -> new_tee -> elligator_check -> elligator_tee -> si
 tls_switch[2] -> Discard;
 
 new_cuckoo[1] -> Discard;
+new_cuckoo[2] -> Discard;
 new_tee[1] -> [2]new_cuckoo;
 elligator_check[1] -> Discard;
 elligator_tee[1] -> [1]td_cuckoo;

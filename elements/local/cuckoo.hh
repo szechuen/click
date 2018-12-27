@@ -11,7 +11,7 @@ class CuckooElement : public Element { public:
 
   CuckooElement() CLICK_COLD;
   const char *class_name() const { return "Cuckoo"; }
-  const char *port_count() const { return "3/2"; }
+  const char *port_count() const { return "3/3"; }
   void push(int, Packet *);
 };
 

@@ -26,12 +26,12 @@ void CuckooElement::push(int i, Packet *p)
 
     case 1:
       filter.Add(t);
-      output(1).push(p);
+      output(2).push(p);
       break;
 
     case 2:
       filter.Delete(t);
-      output(1).push(p);
+      output(2).push(p);
       break;
   }
 }
