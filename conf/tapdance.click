@@ -1,7 +1,7 @@
 source :: {FromDump(source.pcap, TIMING true, STOP true) -> VLANDecap -> output};
 // source :: {FromDevice(eno1, PROMISC true) -> VLANDecap -> output};
 sink :: {input -> IPEncap(4, 1.1.1.1, 2.2.2.2) -> EtherEncap(0x0800, 1:1:1:1:1:1, 2:2:2:2:2:2) -> ToDump(sink.pcap, SNAPLEN 0)};
-// sink :: {input -> IPEncap(4, 1.1.1.1, 2.2.2.2) -> EtherEncap(0x0800, 1:1:1:1:1:1, 2:2:2:2:2:2) -> ToDevice(eno2)};
+// sink :: {input -> IPEncap(4, 1.1.1.1, 2.2.2.2) -> EtherEncap(0x0800, 1:1:1:1:1:1, 2:2:2:2:2:2) -> Queue -> ToDevice(eno2)};
 https_filter :: {input -> Classifier(12/0800) -> Strip(14) -> CheckIPHeader2 -> IPClassifier(dst tcp port https) -> output};
 
 td_cuckoo :: Cuckoo;
