@@ -13,6 +13,7 @@ new_cuckoo :: Cuckoo;
 new_tee :: Tee(2);
 elligator_check :: Elligator;
 elligator_tee :: Tee(2);
+set_syn :: ForceTCP(FLAGS TH_SYN);
 
 
 source -> https_filter -> td_cuckoo -> td_tee -> sink;
@@ -23,7 +24,7 @@ td_tee[1] -> finrst_filter -> [2]td_cuckoo;
 
 
 tls_switch -> [1]new_cuckoo;
-tls_switch[1] -> new_cuckoo -> new_tee -> elligator_check -> elligator_tee -> sink;
+tls_switch[1] -> new_cuckoo -> new_tee -> elligator_check -> elligator_tee -> set_syn -> sink;
 tls_switch[2] -> Discard;
 
 new_cuckoo[1] -> Discard;
