@@ -7,7 +7,7 @@
 CLICK_DECLS
 
 class CuckooElement : public Element { public:
-  cuckoofilter::CuckooFilter<__uint128_t, 12> filter{1000000};
+  cuckoofilter::CuckooFilter<uint64_t, 12> filter{1000000};
 
   CuckooElement() CLICK_COLD;
   const char *class_name() const { return "Cuckoo"; }
